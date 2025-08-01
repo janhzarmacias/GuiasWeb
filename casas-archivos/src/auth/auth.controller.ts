@@ -1,6 +1,6 @@
 import {
   Controller, Get, Post, Res, Query, Body,
-  Session, Redirect
+  Session, Redirect, Req
 } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -47,8 +47,13 @@ export class AuthController {
   }
 
   @Get('logout')
-  logout(@Session() session: Record<string, any>, @Res() res: Response) {
-    session.user = null;
-    return res.redirect('/auth/login-vista?mensaje=Sesión cerrada');
-  }
+logout(@Req() req: any, @Res() res: Response) {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error al eliminar la sesión', err);
+    }
+    res.redirect('/auth/login-vista?mensaje=Sesión cerrada');
+  });
+}
+
 }
