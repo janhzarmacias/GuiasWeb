@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h2>Iniciar sesión</h2>
+
+  <% if (mensaje !== '') { %>
+    <p style="color: red"><%= mensaje %></p>
+  <% } %>
+
+  <form method="POST" action="/auth/login">
+    <label>Usuario:</label>
+    <input type="text" name="username" />
+    <br />
+    <label>Contraseña:</label>
+    <input type="password" name="password" />
+    <br />
+    <button type="submit">Ingresar</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sesión</title>
+</head>
+<body>
+  <% if (casa?.username) { %>
+    <h2>Bienvenido, <%= casa.username %></h2>
+    <p>Propietario de: <%= casa.nombreCasa || 'N/A' %></p>
+    <form method="GET" action="/auth/logout">
+      <button type="submit">Cerrar sesión</button>
+    </form>
+  <% } else { %>
+    <p>No has iniciado sesión</p>
+    <a href="/auth/login-vista">Ir a Login</a>
+  <% } %>
+</body>
+</html>
